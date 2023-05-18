@@ -23,6 +23,7 @@ app.register(memoriesRoutes)
 app
   .listen({
     port: 3333,
+    host: '::',
   })
   .then(() => {
     console.log('HTTP server listening on port http://localhost:3333')
