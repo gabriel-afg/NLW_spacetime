@@ -6,7 +6,7 @@ export async function memoriesRoutes(app: FastifyInstance) {
   app.get('/memories', async () => {
     const memories = await prisma.memory.findMany({
       orderBy: {
-        createdAt: 'asc',
+        createdAt: 'asc', // ordenar as memoria de maneira crescente
       },
     })
 
@@ -21,11 +21,13 @@ export async function memoriesRoutes(app: FastifyInstance) {
 
   app.get('/memories/:id', async (request) => {
     const paramsSchema = z.object({
+      // fazer a validação do id
       id: z.string().uuid(),
     })
 
     const { id } = paramsSchema.parse(request.params)
 
+    // encontrar a memoria do id da request e retornar caso seja a mesma
     const memory = await prisma.memory.findUniqueOrThrow({
       where: {
         id,
