@@ -53,12 +53,13 @@ export default function Layout() {
         screenOptions={{
           headerShown: false,
           contentStyle: { backgroundColor: 'transparent' },
+          animation: 'fade',
         }}
       >
         {/* redireciona para a proxima página, caso o usuario esteja autenticado */}
         <Stack.Screen name="index" redirect={isUserAuthenticated} />
-        <Stack.Screen name="new" />
         <Stack.Screen name="memories" />
+        <Stack.Screen name="new" />
       </Stack>
     </ImageBackground>
   )
